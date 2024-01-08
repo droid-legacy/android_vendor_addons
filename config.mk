@@ -17,6 +17,41 @@ include $(call all-subdir-makefiles,$(LOCAL_PATH))
 PRODUCT_PACKAGE_OVERLAYS += vendor/addons/overlay/common
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/addons/overlay/common
 
+ifeq ($(TARGET_HAS_UDFPS),true)
+PRODUCT_PACKAGES += \
+    UdfpsIcons \
+    UdfpsAnimations
+endif
+
+PRODUCT_COPY_FILES += \
+    vendor/addons/prebuilt/product/etc/sysconfig/dialer_experience.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/dialer_experience.xml \
+    vendor/addons/prebuilt/product/etc/sysconfig/google.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/google.xml \
+    vendor/addons/prebuilt/product/etc/sysconfig/google_build.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/google_build.xml \
+    vendor/addons/prebuilt/product/etc/sysconfig/google_exclusives_enable.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/google_exclusives_enable.xml \
+    vendor/addons/prebuilt/product/etc/sysconfig/google-hiddenapi-package-whitelist.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/google-hiddenapi-package-whitelist.xml \
+    vendor/addons/prebuilt/product/etc/sysconfig/nexus.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/nexus.xml \
+    vendor/addons/prebuilt/product/etc/sysconfig/pixel_2016_exclusive.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_2016_exclusive.xml
+
+ifneq ($(WITH_GMS),true)
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,vendor/addons/prebuilt/product/usr/,$(TARGET_COPY_OUT_PRODUCT)/usr)
+endif
+
+# Prebuilt packages for device features
+PRODUCT_PACKAGES += \
+    DeviceIntelligenceNetworkPrebuilt \
+    DevicePersonalizationPrebuiltPixel2020 \
+    SettingsIntelligenceGooglePrebuilt \
+    TurboPrebuilt
+
+ifneq ($(TARGET_DOESNT_LIKE_FLIPENDO),true)
+PRODUCT_PACKAGES += \
+    FlipendoPrebuilt
+
+BOARD_SEPOLICY_DIRS += \
+    hardware/google/pixel-sepolicy/flipendo
+endif
+
 # Fonts
 PRODUCT_PACKAGES += \
     fonts_customization.xml \
@@ -57,6 +92,54 @@ PRODUCT_PACKAGES += \
     FontSurferOverlay \
     FontUbuntuOverlay
 
+# Icon Packs
+PRODUCT_PACKAGES += \
+    IconPackCircularAndroidOverlay \
+    IconPackCircularLauncherOverlay \
+    IconPackCircularSettingsOverlay \
+    IconPackCircularSystemUIOverlay \
+    IconPackCircularThemePickerOverlay \
+    IconPackVictorAndroidOverlay \
+    IconPackVictorLauncherOverlay \
+    IconPackVictorSettingsOverlay \
+    IconPackVictorSystemUIOverlay \
+    IconPackVictorThemePickerOverlay \
+    IconPackSamAndroidOverlay \
+    IconPackSamLauncherOverlay \
+    IconPackSamSettingsOverlay \
+    IconPackSamSystemUIOverlay \
+    IconPackSamThemePickerOverlay \
+    IconPackKaiAndroidOverlay \
+    IconPackKaiLauncherOverlay \
+    IconPackKaiSettingsOverlay \
+    IconPackKaiSystemUIOverlay \
+    IconPackKaiThemePickerOverlay \
+    IconPackFilledAndroidOverlay \
+    IconPackFilledLauncherOverlay \
+    IconPackFilledSettingsOverlay \
+    IconPackFilledSystemUIOverlay \
+    IconPackFilledThemePickerOverlay \
+    IconPackPUIAndroidOverlay \
+    IconPackPUILauncherOverlay \
+    IconPackPUISettingsOverlay \
+    IconPackPUISystemUIOverlay \
+    IconPackPUIThemePickerOverlay \
+    IconPackRoundedAndroidOverlay \
+    IconPackRoundedLauncherOverlay \
+    IconPackRoundedSettingsOverlay \
+    IconPackRoundedSystemUIOverlay \
+    IconPackRoundedThemePickerOverlay \
+    IconPackOOSAndroidOverlay \
+    IconPackOOSLauncherOverlay \
+    IconPackOOSSettingsOverlay \
+    IconPackOOSSystemUIOverlay \
+    IconPackOOSThemePickerOverlay \
+    IconPackOutlineAndroidOverlay \
+    IconPackOutlineSettingsOverlay \
+    IconPackOutlineSystemUIOverlay \
+    IconPackAcherusAndroidOverlay \
+    IconPackAcherusSystemUIOverlay
+
 # Icon Shapes
 PRODUCT_PACKAGES += \
     IconShapeCloudyOverlay \
@@ -75,6 +158,52 @@ PRODUCT_PACKAGES += \
     IconShapeTaperedRectOverlay \
     IconShapeTeardropOverlay \
     IconShapeVesselOverlay
+
+# Navbar
+PRODUCT_PACKAGES += \
+    GesturalNavigationOverlayLong \
+    GesturalNavigationOverlayMedium \
+    GesturalNavigationOverlayHidden
+
+# Navbar styles
+PRODUCT_PACKAGES += \
+    NavbarAndroidOverlay \
+	NavbarAsusOverlay \
+	NavbarDoraOverlay \
+    NavbarMotoOverlay \
+    NavbarNexusOverlay \
+    NavbarOldOverlay \
+    NavbarOnePlusOverlay \
+    NavbarOneUiOverlay \
+    NavbarSammyOverlay \
+    NavbarTecnoCamonOverlay
+
+# Signal / WiFi Icons
+PRODUCT_PACKAGES += \
+	BarsSignalOverlay \
+	BarsWiFiOverlay \
+	DoraSignalOverlay \
+	DoraWiFiOverlay \
+	InsideSignalOverlay \
+	InsideWiFiOverlay \
+	RoundSignalOverlay \
+	RoundWiFiOverlay \
+	SneakySignalOverlay \
+	SneakyWiFiOverlay \
+	StrokeSignalOverlay \
+	StrokeWiFiOverlay \
+	WavySignalOverlay \
+	WavyWiFiOverlay \
+	WeedWiFiOverlay \
+	XperiaSignalOverlay \
+	XperiaWiFiOverlay \
+	ZigZagSignalOverlay \
+	ZigZagWiFiOverlay
+
+# Themes
+PRODUCT_PACKAGES += \
+    AndroidBlackThemeOverlay \
+    crDroidThemesStub
 
 # Include {Lato,Rubik} fonts
 $(call inherit-product-if-exists, external/google-fonts/lato/fonts.mk)
