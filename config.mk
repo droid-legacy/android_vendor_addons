@@ -232,19 +232,6 @@ PRODUCT_PACKAGES += \
     GesturalNavigationOverlayMedium \
     GesturalNavigationOverlayHidden
 
-# Navbar styles
-PRODUCT_PACKAGES += \
-    NavbarAndroidOverlay \
-    NavbarAsusOverlay \
-    NavbarDoraOverlay \
-    NavbarMotoOverlay \
-    NavbarNexusOverlay \
-    NavbarOldOverlay \
-    NavbarOnePlusOverlay \
-    NavbarOneUiOverlay \
-    NavbarSammyOverlay \
-    NavbarTecnoCamonOverlay
-
 # Signal Icons
 PRODUCT_PACKAGES += \
     AquariumSignalOverlay \
