@@ -135,12 +135,6 @@ PRODUCT_PACKAGES += \
     IconShapeTeardropOverlay \
     IconShapeVesselOverlay
 
-# Navbar
-PRODUCT_PACKAGES += \
-    GesturalNavigationOverlayLong \
-    GesturalNavigationOverlayMedium \
-    GesturalNavigationOverlayHidden
-
 # Signal Icons
 PRODUCT_PACKAGES += \
     AquariumSignalOverlay \
