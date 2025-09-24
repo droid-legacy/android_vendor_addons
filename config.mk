@@ -268,14 +268,6 @@ PRODUCT_PACKAGES += \
     NotifIOS \
     NotifLayers
 
-# Power Menu Themes
-PRODUCT_PACKAGES += \
-    PowerCyberPunk \
-    PowerDuoline \
-    PowerFluid \
-    PowerIOS \
-    PowerLayers
-
 # QS UI Style
 #PRODUCT_PACKAGES += \
 #    A11QSUI \
@@ -347,13 +339,6 @@ PRODUCT_PACKAGES += \
 	ForlornWiFiOverlay \
 	PlumpyWiFiOverlay
 
-# Themes
-PRODUCT_PACKAGES += \
-    AndroidBlackThemeOverlay
-
 # Include {Lato,Rubik} fonts
-$(call inherit-product-if-exists, external/google-fonts/lato/fonts.mk)
-$(call inherit-product-if-exists, external/google-fonts/rubik/fonts.mk)
-
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,vendor/addons/prebuilt/product/fonts,$(TARGET_COPY_OUT_PRODUCT)/fonts)
